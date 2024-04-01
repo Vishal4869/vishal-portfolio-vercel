@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cloudinary'
 ]
 
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env('CLOUD_NAME'),
     'API_KEY': env('API_KEY'),
@@ -94,7 +95,7 @@ DATABASES = {
         'USER': env('POSTGRES_USER'),
         'PASSWORD': env('POSTGRES_PASSWORD'),
         'HOST': env('POSTGRES_HOST'),
-        'PORT':env('POSTGRES_PORT'),
+        'PORT':env('POSTGRESS_PORT'),
     }
 }
 
