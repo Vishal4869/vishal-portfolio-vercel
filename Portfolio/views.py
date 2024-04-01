@@ -9,8 +9,7 @@ def Home(request):
     projects=Project.objects.all().order_by('srno')
     cert=Certifications.objects.all().order_by('srno')
 
-    resume=Resume.objects.first()
-
+    resume=Resume.objects.get()
     if request.method=="POST":
       form=MyForm(request.POST)
       
