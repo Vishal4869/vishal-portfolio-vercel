@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-
+import environ
+env = environ.Env()
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,9 +48,9 @@ INSTALLED_APPS = [
 ]
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dfq6piwqv',
-    'API_KEY': '745132896849493',
-    'API_SECRET': 'ohVNZYI_fe7ttFV23W2OZjanghI'
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET': env('API_SECRET')
 }
 
 MIDDLEWARE = [
@@ -88,11 +90,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verceldb',
-        'USER': 'default',
-        'PASSWORD': 'EgS2Gz1rPLpo',
-        'HOST': 'ep-autumn-lake-a4egr8bi-pooler.us-east-1.aws.neon.tech',
-        'PORT': '5432',
+        'NAME': env('POSTGRES_DATABASE'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT':env('POSTGRES_PORT'),
     }
 }
 
