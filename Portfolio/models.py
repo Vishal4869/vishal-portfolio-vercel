@@ -29,13 +29,28 @@ class Project(models.Model):
         return f'{self.title}'
 
     def save(self, *args, **kwargs):
+        # Check if srno is empty
+        if not self.srno:
+            last_project = Project.objects.order_by('-srno').first()
+            if last_project:
+                self.srno = last_project.srno + 1
+            else:
+                # If no existing projects, set srno to 1
+                self.srno = 1
+
         # Check if the serial number is already in use
-        if Project.objects.filter(srno=self.srno).exists():
-            # Increment the serial number of existing projects with equal or greater numbers
-            existing_projects = Project.objects.filter(srno__gte=self.srno)
-            for project in existing_projects:
-                project.srno += 1
-                project.save()
+        elif Project.objects.filter(srno=self.srno).exists():
+            # If the object already exists and its srno is the same, simply save it without changing other project's srno
+            if self.pk:
+                super(Project, self).save(*args, **kwargs)
+                return
+            else:
+                # Increment the serial number of existing projects with greater numbers
+                existing_projects = Project.objects.filter(srno__gte=self.srno).exclude(pk=self.pk)
+                for project in existing_projects:
+                    project.srno += 1
+                    project.save()
+
         super(Project, self).save(*args, **kwargs)
 
 class Certifications(models.Model):
@@ -53,6 +68,31 @@ class Certifications(models.Model):
     
     def __str__(self):
         return f'{self.title}'
+        
+    def save(self, *args, **kwargs):
+        # Check if srno is empty
+        if not self.srno:
+            last_certificate = Certifications.objects.order_by('-srno').first()
+            if last_certificate:
+                self.srno = last_certificate.srno + 1
+            else:
+                # If no existing certificates, set srno to 1
+                self.srno = 1
+
+        # Check if the serial number is already in use
+        elif Certifications.objects.filter(srno=self.srno).exists():
+            # If the object already exists and its srno is the same, simply save it without changing other certifications' srno
+            if self.pk:
+                super(Certifications, self).save(*args, **kwargs)
+                return
+            else:
+                # Increment the serial number of existing certificates with greater numbers
+                existing_certificates = Certifications.objects.filter(srno__gte=self.srno).exclude(pk=self.pk)
+                for certificate in existing_certificates:
+                    certificate.srno += 1
+                    certificate.save()
+
+        super(Certifications, self).save(*args, **kwargs)
 
 
 
