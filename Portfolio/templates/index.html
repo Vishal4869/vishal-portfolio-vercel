@@ -601,7 +601,7 @@
 
     <!-- Certifications Start -->
     <div class="portfolio" id="portfolio">
-        <div class="container">
+        <div class="container overflow-auto" style="max-height: 800px;">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
 
             <h2 class="ribbon">--- My Certifications ---</h2>
@@ -618,7 +618,7 @@
                 </div>
             </div>
     
-            <div class="row portfolio-container scrollable-row" style="max-height: 500px;" >
+            <div class="row portfolio-container scrollable-row"  >
                 {% for c in cert %}
                 <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item {{c.filter}} ">
                     <div class="portfolio-wrap">
@@ -643,7 +643,7 @@
     <!-- Certifications End -->
 
     <!-- Photography-->
-    <div class="contact wow fadeInUp" data-wow-delay="0.1s" id="photography">
+    <div class="contact" id="photography">
         <div class="container p-4">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
                 <h2 style="color:white;">--- My Photography ---</h2>
