@@ -1660,6 +1660,18 @@ a:focus {
     color: #414141;
 }
 
+.portfolio-container-wrapper {
+    height: 500px; /* Set your desired height */
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.portfolio-container {
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+
 @media (max-width: 575.98px) {
     .footer .footer-info h2 {
         margin-bottom: 20px;
