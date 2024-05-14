@@ -598,6 +598,49 @@
 
         </div>
     </div>
+    <div class="portfolio" id="portfolio">
+    <div class="container">
+        <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+            <h2 class="ribbon">--- My Certifications ---</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul id="portfolio-filter">
+                    <li data-filter="*" class="filter-active" >All</li>
+                    <li data-filter=".programming" >Programming</li>
+                    <li data-filter=".cloud">Cloud</li>
+                    <li data-filter=".networking">Networking</li>
+                    <li data-filter=".other">Other</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="portfolio-container-wrapper">
+                    <div class="portfolio-container scrollable-row">
+                        {% for c in cert %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item {{c.filter}} ">
+                            <div class="portfolio-wrap">
+                                <div class="img border border-secondary pro">
+                                    <img src="{{c.pic.url}}" alt="{{c.title}}" width="100%" height="300" style="object-fit: fill;">
+                                </div>
+                                <div class="portfolio-text rounded shadow">
+                                    <h6 class="mx-2"><b>{{c.title}}</b></h6>
+                                    <a class="mr-0 ml-auto" href="{{c.pic.url}}" data-lightbox="portfolio">
+                                        <i class="fas fa-solid fa-expand"></i>
+                                    </a> 
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
    
     <!-- Certifications Start -->
     <div class="portfolio" id="portfolio">
