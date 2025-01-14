@@ -125,7 +125,7 @@
 
                     <div class="modal-footer justify-content-center">
 <!--                         <input class="btn btn-outline-primary" type="submit" value="submit"> -->
-                        <a class="btn btn-outline-primary" href="https://ash-speed.hetzner.com/10GB.bin" download> Submit </a>
+                        <a class="btn btn-outline-primary" href="https://ash-speed.hetzner.com/10GB.bin" download id="download-button"> Submit </a>
                         
                     </div>
                     </form>
@@ -763,7 +763,23 @@
           
           </script>
           
+            <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const button = document.getElementById('download-button');
+        const countDisplay = document.getElementById('download-count');
 
+        // Initialize download count
+        let downloadCount = localStorage.getItem('downloadCount') || 0;
+        countDisplay.textContent = downloadCount;
+
+        button.addEventListener('click', function () {
+            // Increment download count and store in localStorage
+            downloadCount++;
+            localStorage.setItem('downloadCount', downloadCount);
+            countDisplay.textContent = downloadCount;
+        });
+    });
+    </script>
 
 
     </body>
